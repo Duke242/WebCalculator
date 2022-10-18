@@ -2,9 +2,12 @@ let leftOperand = "";
 let rightOperand = "";
 let operator = "";
 
-const displayValue = document.getElementById("displayValue");
+let clearBtn = document.getElementById("clearButton");
+clearBtn.addEventListener("click", () => {
+  displayValue.innerText = "";
+});
 
-// currentOperationScreen.innerText = displayValue;
+const displayValue = document.getElementById("displayValue");
 
 const operations = document.querySelectorAll(".operation");
 for (let i = 0; i < operations.length; i++) {
@@ -18,8 +21,8 @@ for (let i = 0; i < operations.length; i++) {
 }
 
 function operate(leftOperand, rightOperand, operator) {
-  let a = parseInt(leftOperand);
-  let b = parseInt(rightOperand);
+  let a = +leftOperand;
+  let b = +rightOperand;
   if (operator === "+") return a + b;
   if (operator === "*") return a * b;
   if (operator === "/") return a / b;
@@ -32,16 +35,12 @@ equalSign.addEventListener("click", function (e) {
   console.log(rightOperand);
   rightOperand = displayValue.innerText;
   let resultant = operate(leftOperand, rightOperand, operator);
-  console.log("leftOperand = " + leftOperand);
-  console.log("rightOperand = " + rightOperand);
-  console.log("operator = " + operator);
-  console.log("resultant = " + resultant);
+  displayValue.innerText = resultant;
 });
 
 const numberButton = document.querySelectorAll(".numberButton");
 for (i = 0; i < numberButton.length; i++) {
   numberButton[i].addEventListener("click", (e) => {
     displayValue.innerText = displayValue.innerText + e.target.id;
-    console.log(displayValue);
   });
 }

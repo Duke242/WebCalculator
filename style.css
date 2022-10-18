@@ -7,6 +7,7 @@ body {
 
 #currentOperationScreen { 
     color: red;
+    /* height: 100%; */
     justify-content: center;
 }
 
@@ -38,3 +39,14 @@ body {
     flex-direction: row;
 }
 
+/* ///////////////////////////////// */
+
+.buttons {
+    width: 100px;
+}
+
+
+.numberButton {
+    width: 50px;
+    margin: auto;
+}
