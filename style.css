@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body { 
     height: 100vh;
     width: 100vw;
@@ -8,84 +12,45 @@ body {
     align-items: center;}
 
 #displayValue { 
-    color: black;
-    background-color: green;
+    color: white;
+    background-color: rgb(21, 22, 21);
     width: 200px;    
+    font-size: 2rem;
 }
 
 .btns-section { 
     display: flex;
     flex-direction: row;
+    flex-grow: 1;
 }
 
 .buttons { 
     display: flex;
     flex-direction: column;
-    height: 75%;
-    width: 1000px;
+
 }
 
-.button1, .button2 { 
+.col { 
     display: flex;
     flex-direction: column;
-    max-width: 100px;
 }
 
-.button3 { 
-    display: flex;
-    flex-direction: column;
-    max-width: 100px;
+button {
+    flex-grow: 1;
     border-radius: 50%;
+    border: none;
+    aspect-ratio: 1;
 }
 
-.buttons { 
-    display: flex;
-    flex-direction: column;  
-}
-
-.buttons4 {
-    display: flex;
-    flex-direction: column;
-    width: 50px; 
-    height: 50px;
-}
-
-.buttons {
-    width: 1000px;
-}
-
-
-.numberButton {
+.number {
     width: 50px;
-    margin: auto;
 }
 
 #displayValue { 
-    justify-items: right;
+    text-align: right;
+    padding-right: 10px;
 }
 
-.button3 button { 
-    border-radius: 50%;
-    height: 50px;
-    border: none;
-}
 
-.button1 button { 
-    border-radius: 50%;
-    height: 50px;
-    border: none;
-}
-
-.button2 button { 
-    border-radius: 50%;
-    height: 50px;
-    border: none;
-}
-
-.buttons4 button { 
-    border-radius: 50%;
-    height: 40px;
-    border: none;
-}
 
 
