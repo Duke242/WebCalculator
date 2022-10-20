@@ -4,43 +4,82 @@ let operator = "";
 
 let clearBtn = document.getElementById("clearButton");
 clearBtn.addEventListener("click", () => {
-  displayValue.innerText = "";
+  display.value = 0;
 });
 
-const displayValue = document.getElementById("displayValue");
+const display = document.getElementById("display");
 
 const operations = document.querySelectorAll(".operation");
-for (let i = 0; i < operations.length; i++) {
-  operations[i].addEventListener("click", function (e) {
-    console.log(e.target.id);
+operations.forEach((op) => {
+  op.addEventListener("click", (e) => {
     operator = e.target.id;
-    leftOperand = displayValue.innerText;
-    displayValue.innerText = "";
-    return e.target.id;
+    leftOperand = display.value;
+    display.value = 0;
   });
-}
-
-function operate(leftOperand, rightOperand, operator) {
-  let a = +leftOperand;
-  let b = +rightOperand;
-  if (operator === "+") return a + b;
-  if (operator === "*") return a * b;
-  if (operator === "/") return a / b;
-  if (operator === "-") return a - b;
-  /*Throw error*/
-}
-
-const equalSign = document.querySelector(".equalSign");
-equalSign.addEventListener("click", function (e) {
-  console.log(rightOperand);
-  rightOperand = displayValue.innerText;
-  let resultant = operate(leftOperand, rightOperand, operator);
-  displayValue.innerText = resultant;
 });
 
-const numberButton = document.querySelectorAll(".numberButton");
-for (i = 0; i < numberButton.length; i++) {
-  numberButton[i].addEventListener("click", (e) => {
-    displayValue.innerText = displayValue.innerText + e.target.id;
+// for (let i = 0; i < operations.length; i++) {
+//   operations[i].addEventListener("click", (e) => {
+//     console.log(e.target.id);
+//     operator = e.target.id;
+//     leftOperand = display.value;
+//   });
+// }
+
+const operate = (leftOperand, rightOperand, operator) => {
+  let a = +leftOperand;
+  let b = +rightOperand;
+  // if (operator === "+") return a + b;
+  // if (operator === "*") return a * b;
+  // if (operator === "/") return a / b;
+  // if (operator === "-") return a - b;
+  switch (operator) {
+    case "+":
+      return a + b;
+    case "*":
+      return a * b;
+    case "/":
+      return a / b;
+    case "-":
+      return a - b;
+  }
+};
+
+const equalSign = document.querySelector(".equalSign");
+equalSign.addEventListener("click", (e) => {
+  rightOperand = display.value;
+  let resultant = operate(leftOperand, rightOperand, operator);
+  display.value = resultant;
+});
+
+document.querySelectorAll(".number").forEach((num) => {
+  num.addEventListener("click", (e) => {
+    // if (display.value === "0") {
+    //   display.value = e.target.id;
+    // } else {
+    //   display.value += e.target.id;
+    // }
+
+    let existing = display.value;
+    let incoming = e.target.id;
+    if (incoming === "dot") {
+      if (!existing.includes(".")) {
+        incoming = ".";
+      } else {
+        return;
+      }
+    }
+    if (existing === "0") {
+      existing = "";
+    }
+
+    display.value = `${existing}${incoming}`;
   });
-}
+});
+
+// for (i = 0; i < numberButton.length; i++) {
+//   numberButton[i].addEventListener("click", (e) => {
+//     display.value = "";
+//     display.value += e.target.id;
+//   });
+// }
