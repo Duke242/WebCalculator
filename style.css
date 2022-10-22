@@ -9,12 +9,13 @@ body {
     display: flex;
     flex-direction: column;
     align-content: center;
-    align-items: center;}
+    align-items: center;
+}
 
 #display { 
     color: rgb(17, 15, 15);
     background-color: rgb(84, 194, 84);
-    width: 200px;    
+    width: 250px;    
     font-size: 2rem;
     text-align: right;
     padding-right: 10px;
@@ -24,17 +25,21 @@ body {
     display: flex;
     flex-direction: row;
     flex-grow: 1;
+    background-color: black;
+    gap: 5px;
 }
 
 .buttons { 
     display: flex;
     flex-direction: column;
-
+    
 }
 
 .col { 
     display: flex;
     flex-direction: column;
+    gap: 5px;
+    margin: 5px;
 }
 
 button {

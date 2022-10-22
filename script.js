@@ -59,7 +59,6 @@ document.querySelectorAll(".number").forEach((num) => {
     // } else {
     //   display.value += e.target.id;
     // }
-
     let existing = display.value;
     let incoming = e.target.id;
     if (incoming === "dot") {
