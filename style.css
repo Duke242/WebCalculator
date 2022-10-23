@@ -19,6 +19,7 @@ body {
 }
 
 
+
 #display { 
     color: rgb(17, 15, 15);
     background-color: rgb(84, 194, 84);
@@ -29,7 +30,7 @@ body {
 
 }
 
-/* Hello12 */ 
+
 
 .btns-section { 
     display: flex;
