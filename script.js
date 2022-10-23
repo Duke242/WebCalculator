@@ -18,13 +18,7 @@ operations.forEach((op) => {
   });
 });
 
-// for (let i = 0; i < operations.length; i++) {
-//   operations[i].addEventListener("click", (e) => {
-//     console.log(e.target.id);
-//     operator = e.target.id;
-//     leftOperand = display.value;
-//   });
-// }
+
 
 const operate = (leftOperand, rightOperand, operator) => {
   let a = +leftOperand;
