@@ -23,10 +23,7 @@ operations.forEach((op) => {
 const operate = (leftOperand, rightOperand, operator) => {
   let a = +leftOperand;
   let b = +rightOperand;
-  // if (operator === "+") return a + b;
-  // if (operator === "*") return a * b;
-  // if (operator === "/") return a / b;
-  // if (operator === "-") return a - b;
+
   switch (operator) {
     case "+":
       return a + b;
@@ -48,11 +45,7 @@ equalSign.addEventListener("click", (e) => {
 
 document.querySelectorAll(".number").forEach((num) => {
   num.addEventListener("click", (e) => {
-    // if (display.value === "0") {
-    //   display.value = e.target.id;
-    // } else {
-    //   display.value += e.target.id;
-    // }
+  
     let existing = display.value;
     let incoming = e.target.id;
     if (incoming === "dot") {
@@ -70,9 +63,4 @@ document.querySelectorAll(".number").forEach((num) => {
   });
 });
 
-// for (i = 0; i < numberButton.length; i++) {
-//   numberButton[i].addEventListener("click", (e) => {
-//     display.value = "";
-//     display.value += e.target.id;
-//   });
-// }
+
