@@ -2,37 +2,40 @@ let leftOperand = "";
 let rightOperand = "";
 let operator = "";
 
+const display = document.querySelector("#display input");
+
 let clearBtn = document.getElementById("clearButton");
 clearBtn.addEventListener("click", () => {
   display.value = 0;
+  display.className = "operated";
 });
 
-const display = document.getElementById("display");
-
-const operations = document.querySelectorAll(".operation");
-operations.forEach((op) => {
+document.querySelectorAll(".operation").forEach((op) => {
   op.addEventListener("click", (e) => {
+    display.className = "operating";
     operator = e.target.id;
     leftOperand = display.value;
-    display.value = 0;
   });
 });
 
-
-
 const operate = (leftOperand, rightOperand, operator) => {
-  let a = +leftOperand;
-  let b = +rightOperand;
+  const a = parseFloat(leftOperand);
+  const b = parseFloat(rightOperand);
 
-  switch (operator) {
-    case "+":
-      return a + b;
-    case "*":
-      return a * b;
-    case "/":
-      return a / b;
-    case "-":
-      return a - b;
+  if (operator === "/" && b === 0) {
+    alert("Cannot divide by zero");
+    return 0;
+  } else {
+    switch (operator) {
+      case "+":
+        return a + b;
+      case "*":
+        return a * b;
+      case "/":
+        return a / b;
+      case "-":
+        return a - b;
+    }
   }
 };
 
@@ -45,7 +48,6 @@ equalSign.addEventListener("click", (e) => {
 
 document.querySelectorAll(".number").forEach((num) => {
   num.addEventListener("click", (e) => {
-  
     let existing = display.value;
     let incoming = e.target.id;
     if (incoming === "dot") {
@@ -55,12 +57,11 @@ document.querySelectorAll(".number").forEach((num) => {
         return;
       }
     }
-    if (existing === "0") {
+    if (existing === "0" || display.className === "operating") {
       existing = "";
     }
+    display.className = "operated";
 
     display.value = `${existing}${incoming}`;
   });
 });
-
-
