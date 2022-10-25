@@ -41,8 +41,6 @@ body {
     padding: 10px;
 }
 
-
-
 .btns-section { 
     display: flex;
     flex-direction: row;
@@ -64,9 +62,11 @@ body {
 }
 
 .buttons button { 
-    font-size: 15px;
+    font-size: 25px;
     font-weight: 900;
     color: white;
+    padding: 0 1em;
+    line-height: 0;
 }
 
 .col { 
@@ -82,7 +82,8 @@ button {
     border: none;
     aspect-ratio: 1;
     background-color: red;
-    cursor: crosshair
+    cursor: crosshair;
+    transition: background-color 0.5s;
 }
 
 button:hover {
@@ -91,10 +92,6 @@ button:hover {
 
 button:active {
     background-color: blue;
-}
-
-.number {
-    width: 50px;
 }
 
 .operating input {
@@ -115,9 +112,10 @@ button:active {
     background-color: green;
 }
 
-.operation.active {
+.active {
     background-color: aquamarine;
     color: black
+
 }
 
 @keyframes blink {

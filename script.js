@@ -12,7 +12,7 @@ const escPress = () => {
 };
 
 const clearActive = () => {
-  document.querySelectorAll(".operation").forEach((op) => {
+  document.querySelectorAll("button").forEach((op) => {
     op.classList.remove("active");
   });
 };
@@ -78,7 +78,8 @@ const enterPress = () => {
     operator,
     op: operate(leftOperand, rightOperand, operator),
   });
-
+  clearActive();
+  document.getElementById("=").classList.add("active");
   input.value = operate(leftOperand, rightOperand, operator);
   leftOperand = input.value;
 };
@@ -102,9 +103,10 @@ const numPress = (digit) => {
     existing = "";
   }
   display.className = "operated";
-
   input.value = `${existing}${incoming}`;
   rightOperand = input.value;
+  clearActive();
+  document.getElementById(digit).classList.add("active");
 };
 
 document.querySelectorAll(".number").forEach((num) => {
@@ -115,7 +117,7 @@ document.querySelectorAll(".number").forEach((num) => {
 
 document.addEventListener("keyup", (event) => {
   event.stopPropagation();
-  if (/\d/.test(event.key)) {
+  if (/^\d$/.test(event.key)) {
     numPress(event.key);
   } else if (["+", "-", "*", "/"].includes(event.key)) {
     opPress(event.key);
