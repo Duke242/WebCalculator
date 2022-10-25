@@ -115,6 +115,11 @@ button:active {
     background-color: green;
 }
 
+.operation.active {
+    background-color: aquamarine;
+    color: black
+}
+
 @keyframes blink {
     from { opacity: 1; color: black; }
     to { opacity: 0.25; color: green; }

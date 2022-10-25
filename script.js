@@ -3,25 +3,42 @@ let rightOperand = 0;
 let operator = "";
 
 const display = document.querySelector("#display");
-
 const input = document.querySelector("#display input");
+
+const escPress = () => {
+  input.value = 0;
+  display.className = "operated";
+  clearActive();
+};
+
+const clearActive = () => {
+  document.querySelectorAll(".operation").forEach((op) => {
+    op.classList.remove("active");
+  });
+};
 
 let clearBtn = document.getElementById("clearButton");
 clearBtn.addEventListener("click", (event) => {
-  console.log({ event });
   if (event.pointerId > 0) {
-    input.value = 0;
-    display.className = "operated";
+    escPress();
   }
 });
 
 const opDisplay = document.getElementById("operator");
 
 const opPress = (op) => {
+  operator = op === "/" ? "÷" : op;
+  // if (op === "/") {
+  //   operator = "÷";
+  // } else {
+  //   operator = op;
+  // }
+
   display.className = "operating";
-  operator = op;
   opDisplay.textContent = operator;
   leftOperand = input.value;
+  clearActive();
+  document.getElementById(operator).classList.add("active");
 };
 
 document.querySelectorAll(".operation").forEach((op) => {
@@ -44,6 +61,7 @@ const operate = (leftOperand, rightOperand, operator) => {
       case "*":
         return a * b;
       case "÷":
+      case "/":
         return a / b;
       case "-":
         return a - b;
@@ -54,14 +72,15 @@ const operate = (leftOperand, rightOperand, operator) => {
 };
 
 const enterPress = () => {
-  rightOperand = input.value;
   console.log({
     leftOperand,
     rightOperand,
     operator,
     op: operate(leftOperand, rightOperand, operator),
   });
+
   input.value = operate(leftOperand, rightOperand, operator);
+  leftOperand = input.value;
 };
 
 const equalSign = document.querySelector(".equalSign");
@@ -85,6 +104,7 @@ const numPress = (digit) => {
   display.className = "operated";
 
   input.value = `${existing}${incoming}`;
+  rightOperand = input.value;
 };
 
 document.querySelectorAll(".number").forEach((num) => {
@@ -93,7 +113,7 @@ document.querySelectorAll(".number").forEach((num) => {
   });
 });
 
-document.addEventListener("keypress", (event) => {
+document.addEventListener("keyup", (event) => {
   event.stopPropagation();
   if (/\d/.test(event.key)) {
     numPress(event.key);
@@ -101,5 +121,7 @@ document.addEventListener("keypress", (event) => {
     opPress(event.key);
   } else if (event.key === "Enter") {
     enterPress();
+  } else if (event.key === "Escape") {
+    escPress();
   }
 });
