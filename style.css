@@ -18,14 +18,18 @@ body {
     flex-direction: column;
 }
 
-
-
 #display { 
     color: rgb(17, 15, 15);
     background-color: darkseagreen;
-    width: 280px;    
     border: 10px solid rgb(52, 52, 176);
     border-radius: 10px 10px 0 0;
+    display: flex;
+    align-items: center;
+}
+
+#operator {
+    font-size: 200%;
+    padding: 0 0.5rem;
 }
 
 #display input {
@@ -93,15 +97,29 @@ button:active {
     width: 50px;
 }
 
-.operating {
+.operating input {
     animation: blink 0.5s ease-in-out infinite;
     animation-direction: alternate;
+}
+
+#operator {
+    display: none;
+}
+
+.operating #operator {
+    display: inherit;
+}
+
+.operation, #clearButton, .equalSign {
+    padding: 1em;
+    background-color: green;
 }
 
 @keyframes blink {
     from { opacity: 1; color: black; }
     to { opacity: 0.25; color: green; }
 }
+
 
 
 
